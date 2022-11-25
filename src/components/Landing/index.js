@@ -1,4 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react'
+import {  Link } from "react-router-dom";
 
 const Landing = () => {
 
@@ -18,15 +19,29 @@ const Landing = () => {
     }, [])
 
 
+    const setLeftImg = () => {
+        refWolvenire.current.classList.add('leftImg');
+    }
+
+    const setRightImg = () => {
+        refWolvenire.current.classList.add('rightImg');
+    }
+
+    const clearImg = () => {
+        refWolvenire.current.classList.remove('leftImg');
+        refWolvenire.current.classList.remove('rightImg');
+    }
+
+
    const displayBtn =  btn && (
 
         <>
-            <div className='leftBox'>
-                <button className='btn-welcome'>Inscription</button>
+            <div className='leftBox'  onMouseOver={setLeftImg} onMouseOut={clearImg}>
+                <Link className='btn-welcome' to="/signup">Inscription</Link>
             </div>
 
-            <div className='rightBox'>
-                <button className='btn-welcome'>Connexion</button>
+            <div className='rightBox' onMouseOver={setRightImg} onMouseOut={clearImg}>
+                <Link className='btn-welcome' to="/login">Connexion</Link>
             </div>
         </>
     )
