@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import {createUserWithEmailAndPassword } from "firebase/auth";
 import { auth} from '../Firebase/FirebaseConfig';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+
+  const navigate = useNavigate();
 
   const data = {
     pseudo: '',
@@ -24,6 +27,7 @@ const Signup = () => {
     createUserWithEmailAndPassword(auth, email, password)
     .then(user => {
       setLoginData({...data})
+      navigate("/welcome")
     })
     .catch(error => {
       setError(error);
@@ -57,7 +61,7 @@ const errorMsg = error !== '' && <span>{error.message}</span>
                   </div>
 
                   <div className='inputBox'>
-                    <input onChange={handleChange} type="text" value={email} id='email' autoComplete='off' required />
+                    <input onChange={handleChange} type="email" value={email} id='email' autoComplete='off' required />
                     <label htmlFor="email">Email</label>
                   </div>
 
@@ -72,6 +76,9 @@ const errorMsg = error !== '' && <span>{error.message}</span>
                   </div>
                   {btn}
                 </form>
+                <div className='linkConaiter'>
+                  <Link className='simpleLink' to="/login"> Déjà inscrit ? Connectez-vous</Link>
+                </div>
               </div>
            </div>
         </div>
