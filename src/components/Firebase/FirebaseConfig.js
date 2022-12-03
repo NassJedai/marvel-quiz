@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import  {getAuth} from 'firebase/auth';
-
+import {getFirestore, doc} from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: "AIzaSyAwSSpDck73LQmIZT6gKaJjVNNXcpjr2Iw",
   authDomain: "marvel-quiz-c1ef8.firebaseapp.com",
@@ -11,6 +11,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
 
+export const firestore = getFirestore();
+export const user = uid => doc(firestore,`users/${uid}`);
+
+export const auth = getAuth(app);
 export default firebaseConfig;
