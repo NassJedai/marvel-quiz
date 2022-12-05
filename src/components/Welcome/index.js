@@ -25,13 +25,13 @@ const Welcome = () => {
       .then(snapshot => {
         if(snapshot.exists()) {
          const docdata =  snapshot.data(); // objet
-         console.log(docdata);
-         console.log(snapshot.id)
+        //  console.log(docdata);
+        //  console.log(snapshot.id)
          setUserData(docdata);
         }
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       })
     }
     return listener();
