@@ -15,7 +15,7 @@ const Landing = () => {
         setTimeout(() => {
             refWolvenire.current.classList.remove('startingImg');
             setBtn(true);
-        }, 1000)
+        }, 3000)
     }, [])
 
 

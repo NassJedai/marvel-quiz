@@ -14,7 +14,8 @@ class Quiz extends Component  {
     options: [],
     idQuestion: 0,
     btnDisabled: true,
-    userAnswer: null
+    userAnswer: null,
+    score : 0
   }
 
 
@@ -36,6 +37,15 @@ class Quiz extends Component  {
    }
    
 
+   nextQuestion = () => {
+     if(this.state. quizLevel === this.state.maxQuestions - 1) {
+      // End 
+     } else {
+      this.setState(prevState => ({
+        idQuestion: prevState.idQuestion + 1 
+      }))
+     }
+   }
 
    componentDidUpdate(prevProps, prevState) {
      if(this.state.storedQuestions !== prevState.storedQuestions) {
@@ -77,8 +87,9 @@ class Quiz extends Component  {
 
         <button 
           disabled={this.state.btnDisabled} 
-          className="btnSubmit">
-            Suivant
+          className="btnSubmit"
+          onClick={this.nextQuestion}>
+          Suivant
         </button>
       </div>
     )
